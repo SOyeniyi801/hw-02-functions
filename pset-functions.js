@@ -30,7 +30,18 @@ Use the following test cases to confirm your program meets the success criteria
 console.log('Problem 1:')
 
 // Add your code below this line
-
+const blackJack = (playerCardScore, dealerCardScore) => {
+    if (playerCardScore > 21 && dealerCardScore > 21){
+        return 0
+    }else if (dealerCardScore > 21){
+        return playerCardScore
+    } else if (playerCardScore > 21 ){
+        return dealerCardScore
+    } else {
+        return Math.max(playerCardScore, dealerCardScore)
+    }
+}
+console.log(blackJack(22,22))
 // Add your code above this line
 
 /** added for formatting purposes **/
@@ -51,7 +62,7 @@ F, H, V, W, Y                      4
 K                                  5
 J, X                               8
 Q, Z                               10
-```
+
 
 Feel free to add any additional functions or variables you deem necessary to meet the above requirements
 
@@ -76,6 +87,32 @@ console.log('Problem 2:')
 
 // Add your code below this line
 
+const scrabbleScore = word => {
+    const letters = word.toUpperCase().split('')
+    let sum = 0;
+
+    letters.forEach(function(letter){
+        if (["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"].includes(letter)) {
+            sum += 1
+        } else if (["D", "G"].includes(letter)) {
+            sum += 2
+        } else if (["B", "C", "M", "P"].includes(letter)){
+            sum += 3
+        } else if (["F", "H", "V", "W", "Y"].includes(letter)) {
+            sum += 4
+        } else if (["K"].includes(letter)){
+            sum += 5
+        } else if (["J", "X"].includes(letter)){
+            sum += 8
+        } else if(["Q", "Z"].includes(letter)){
+            sum +=10
+        } 
+    })
+    return sum
+}
+
+console.log(scrabbleScore('function'))
+console.log(scrabbleScore('javascript'))
 // Add your code above this line
 
 /** added for formatting purposes **/
@@ -114,7 +151,10 @@ Use the following test cases to confirm your program meets the success criteria
 console.log('Problem 3:')
 
 // Add your code below this line
+const isPalindrome = word => word === word.split('').reverse().join('')
 
+
+console.log(isPalindrome('racecar'))
 // Add your code above this line
 
 /** added for formatting purposes **/
@@ -147,7 +187,19 @@ Use the following test cases to confirm your program meets the success criteria
 console.log('Problem 4:')
 
 // Add your code below this line
-
+const doubleLetters = word => {
+    for(i=0 ; i <= word.length ; i++){
+        for (let j = i +1 ; j <= word.length; j++ ){
+            if(word[j] === word[i]){
+                return true
+            }    
+        }
+    }
+    return false
+}
+console.log(doubleLetters("apple"))
+console.log(doubleLetters("rune"))
+console.log(doubleLetters("loop"))
 // Add your code above this line
 
 /** added for formatting purposes **/
@@ -208,6 +260,20 @@ console.log('Problem 5 - bonus:')
 
 // Add your code below this line
 
+const wordCount = (singleWord) => {
+    const words = singleWord.split(" ")
+    const oneWord ={}
+
+    words.forEach((eachWord) => {
+        if (oneWord[eachWord] === undefined) {
+            oneWord[eachWord] = 1
+        } else{
+            oneWord[eachWord] === oneWord[eachWord] + 1
+        }
+    })
+        return oneWord
+}
+console.log(wordCount('Humpty Dumpty sat on a wall Humpty Dumpty had a great fall'))
 // Add your code above this line
 
 /** added for formatting purposes **/
